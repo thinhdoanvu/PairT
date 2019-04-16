@@ -290,10 +290,10 @@ if [ "$SNP" != "no" ]; then
 	cat namelist | parallel 'bedtools coverage -a mapped.bed -b {}-RG.bam -bed > {}.stast'
 	ls *stast | awk '{print substr($0,1,index($0,".")-1)}' >name
 	t=$(cat name)
-	echo -e "Chrom\tStart\tEnd\t$t" | tr "\n" "\t" |awk '{print $0}' > Bedcov_merge.txt
+	echo -e "Chrom,Start,End,$t" | tr "\n" "\t" |awk '{print $0}' > Bedcov_merge.txt
 	temp1=$(head -1 name | awk '{print $0".stast"}')
-	for i in $temp1; do awk '{print $1"\t"$2"\t"$3}' $i >col1_3; done
-	for i in $t; do awk '{print $4}' $i.stast > $i.col4; done
+	for i in $temp1; do awk '{print $1","$2","$3}' $i >col1_3; done
+	for i in $t; do awk '{print $7}' $i.stast > $i.col4; done
 	paste *col4 >col_4
 	paste col1_3 col_4 >> Bedcov_merge.txt
 	rm col* | rm col1_3 | rm col_4
