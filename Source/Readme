@@ -1,4 +1,4 @@
 Make folder PairT in your path
 Make sure reference file in the same directorey with input sequene files (.F and .R header file)
-PairT can be run directly from: ./PairT and answer some question for making configuration file
-Or run by: PairT PairT.config
+PairT can be run directly from: PairT.sh and answer some questions for making configuration file
+Or run by: PairT.sh PairT.config
