@@ -1,0 +1,3 @@
+cat namelist | parallel 'bedtools coverage -a mapped.bed -b {}-RG.bam -bed > tlcuong.spandxdata.{}.stast'
+
+
